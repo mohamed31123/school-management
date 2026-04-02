@@ -4,6 +4,8 @@ package ma.fstgm.security.shcoolmanagement.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "students")
 @Getter @Setter @ToString
@@ -33,4 +35,8 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "id_filiere", nullable = false,updatable = false,insertable = false)
     private Filiere  filiere;
+
+    //adding the relationship between the student and the course
+    @OneToMany(mappedBy = "student")
+    private List<Inscription> inscriptions;
     }
